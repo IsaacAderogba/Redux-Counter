@@ -1,8 +1,8 @@
-import { INCREMENT, DECREMENT, INCREMENT_IF_ODD, INCREMENT_ASYNC } from '../actions';
+import { INCREMENT, DECREMENT, INCREMENT_IF_ODD, INCREMENT_ASYNC } from "../actions";
 
 const initialState = {
   count: 0
-}
+};
 
 // Our reducer that handles our two action cases:
 // increment and decrement. It receives the state
@@ -12,11 +12,15 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT:
-      return {...state, count: state.count + 1};
+      return { ...state, count: state.count + 1 };
     case DECREMENT:
-      return {...state, count: state.count - 1};
+      return { ...state, count: state.count - 1 };
     case INCREMENT_IF_ODD:
-      return state.count % 2 !== 0 ? {...state, count: state.count + 1} : state 
+      return state.count % 2 !== 0
+        ? { ...state, count: state.count + 1 }
+        : state;
+    case INCREMENT_ASYNC:
+        return { ...state, count: state.count + 1 };
     default:
       return state;
   }
